@@ -1,0 +1,19 @@
+version: "3"
+
+networks:
+  faceinhole:
+    external: false
+
+services:
+  app:
+    image: php:7.2-apache
+    container_name: ${DOMAIN}-www
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 8884:80
+    env_file: .env
+    restart: always
+    networks:
+      - faceinhole
+  
